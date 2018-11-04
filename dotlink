@@ -1,0 +1,53 @@
+# vim: ft=conf
+###############################################################################
+#                         _       _    __ _ _                                 #
+#                      __| | ___ | |_ / _(_) | ___  ___                       #
+#                     / _` |/ _ \| __| |_| | |/ _ \/ __|                      #
+#                    | (_| | (_) | |_|  _| | |  __/\__ \                      #
+#                     \__,_|\___/ \__|_| |_|_|\___||___/                      #
+#                                                                             #
+###############################################################################
+# This file contains dotfiles linksets.
+# You can comment out by adding "#" at the beginning of the line.
+# And an empty line is ignored by dot.
+#
+# Format:
+# <dotfile>,<linkto>
+#
+# the script automatically add directory information to the file path.
+# So, you should write like below:
+#     .vimrc,.vimrc
+#
+# You can load from outside of the dotfiles directory:
+#     ~/Dropbox/.netrc,.netrc
+#
+# You can easily copy the existing file to the dotfiles repository
+# and add new link list by
+#     dot add [-m "some comment"] original_file dotfiles_path
+# or, just
+#     dot add original_file
+# In the second example, the script automatically completes the second
+# arguments and confirm whether or not to execute that command.
+#
+#------------------------------------------------------------------------------
+
+.config/mpv/lua-settings/osc.conf,.config/mpv/lua-settings/osc.conf
+.config/mpv/mpv.conf,.config/mpv/mpv.conf
+.config/nvim/dein.toml,.config/nvim/dein.toml
+.config/nvim/dein_lazy.toml,.config/nvim/dein_lazy.toml
+.config/nvim/init.vim,.config/nvim/init.vim
+.config/ranger/commands.py,.config/ranger/commands.py
+.config/ranger/commands_full.py,.config/ranger/commands_full.py
+.config/ranger/rc.conf,.config/ranger/rc.conf
+.config/ranger/rifle.conf,.config/ranger/rifle.conf
+.xmonad/xmonad.hs,.xmonad/xmonad.hs
+bin/get-volume.sh,bin/get-volume.sh
+bin/sound_volume_change_wrapper.sh,bin/sound_volume_change_wrapper.sh
+.uim,.uim
+.xinitrc,.xinitrc
+.xmobarrc,.xmobarrc
+.Xresources,.Xresources
+.zprofile,.zprofile
+.zshenv,.zshenv
+.zshrc,.zshrc
+.stalonetrayrc,.stalonetrayrc

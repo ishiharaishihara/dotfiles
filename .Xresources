@@ -1,0 +1,5 @@
+URxvt.font: xft:Oxgen Mono-14,MigMix 2M-14
+URxvt.reverseVideo: true
+URxvt.letterSpace: -1
+URxvt.scrollBar: false
+URxvt.cursorBlank: true
