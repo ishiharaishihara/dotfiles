@@ -38,6 +38,7 @@
 .config/nvim/init.vim,.config/nvim/init.vim
 .config/ranger/commands.py,.config/ranger/commands.py
 .config/ranger/commands_full.py,.config/ranger/commands_full.py
+.config/ranger/scope.sh,.config/ranger/scope.sh
 .config/ranger/rc.conf,.config/ranger/rc.conf
 .config/ranger/rifle.conf,.config/ranger/rifle.conf
 .xmonad/xmonad.hs,.xmonad/xmonad.hs

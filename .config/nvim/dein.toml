@@ -39,7 +39,20 @@ hook_add = '''
     syntax on
 '''
 [[plugins]]
+repo = 'dracula/vim'
+[[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''
-    au MyAutoCmd Vimenter * NERDTree
+"    au MyAutoCmd Vimenter * NERDTree
+    map <C-q> :NERDTreeToggle<CR>
+    autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 '''
+[[plugins]]
+repo = 'mattn/webapi-vim'
+[[plugins]]
+repo = 'kana/vim-metarw'
+[[plugins]]
+repo = 'mattn/vim-metarw-gdrive'
+depends = ['mattn/webapi-vim', 'kana/vim-metarw']
+[[plugins]]
+repo = 'Shougo/denite.nvim'

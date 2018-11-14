@@ -1,6 +1,7 @@
 augroup MyAutoCmd
     autocmd!
 augroup END
+setlocal foldmethod=indent
 set shellslash
 set encoding=utf-8
 set fileencoding=utf-8
@@ -9,15 +10,15 @@ set autoread
 set hidden
 set showcmd
 if has('win32')
-    set shell=powershell
+    set shell=powershell shellquote=\" shellpipe=\| shellredir=>
+    set shellcmdflag=-Command
+    let &shellxquote=' '
     let g:vimproc#download_windows_dll = 1
-    let python_host_prog="C:/tools/msys64/mingw32/bin/python2.exe"
-    let python3_host_prog="C:/tools/msys64/mingw32/bin/python3.exe"
 else
     set shell=/usr/bin/zsh
-    let python_host_prog="/usr/bin/python2"
-    let python3_host_prog="/usr/bin/python3"
 endif
+
+let python3_host_prog=$PYENV_ROOT . "/shims/python3"
 
 
 set number
@@ -54,6 +55,7 @@ let g:indent_guides_enable_on_vim_startup = 1
 let g:indent_guides_start_level = 2
 let g:indent_guides_guide_size = 1
 
+"dein
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let s:config_home = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
 let s:data_home = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
