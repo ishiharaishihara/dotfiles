@@ -12,6 +12,8 @@ import XMonad.Layout.NoBorders
 import XMonad.Util.EZConfig
 import XMonad.Util.SpawnOnce
 import XMonad.Actions.UpdatePointer
+import XMonad.Hooks.SetWMName
+
 colorBlue      = "#868bae"
 colorGreen     = "#00d700"
 colorRed       = "#ff005f"
@@ -29,8 +31,7 @@ main=do
     layoutHook = toggleLayouts (noBorders Full) $ avoidStruts $ layoutHook def,
     handleEventHook = fullscreenEventHook <+> handleEventHook def,
     startupHook = myStartupHook,
-    logHook = myLogHook xproc
-                >> updatePointer (0.5, 0.5) (0, 0)
+    logHook = myLogHook xproc >> updatePointer (0.5, 0.5) (0, 0)
     }
     `additionalKeysP`
     [
@@ -47,6 +48,7 @@ main=do
     ]
 
 myStartupHook = do
+  setWMName "LG3D"
   spawnOnce "stalonetray"
   spawnOnce "slack"
   spawnOnce "enpass"

@@ -2,6 +2,9 @@ augroup MyAutoCmd
     autocmd!
 augroup END
 setlocal foldmethod=indent
+set foldlevel=3
+set foldopen=all
+set foldclose=all
 set shellslash
 set encoding=utf-8
 set fileencoding=utf-8
@@ -22,6 +25,7 @@ let python3_host_prog=$PYENV_ROOT . "/shims/python3"
 
 
 set number
+set relativenumber
 set cursorline
 set virtualedit=onemore
 set smartindent
@@ -39,6 +43,7 @@ set shiftwidth=4
 set ignorecase
 set smartcase
 set incsearch
+set nowrap
 set wrapscan
 set clipboard=unnamedplus
 set hlsearch
@@ -77,7 +82,6 @@ if dein#load_state(s:dein_dir)
   call dein#save_state()
 endif
 
-
 if dein#check_install()
   call dein#install()
 endif
@@ -85,3 +89,7 @@ endif
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+set background=dark
+au MyAutoCmd VimEnter * nested colorscheme dracula
+syntax on

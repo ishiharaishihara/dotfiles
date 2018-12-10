@@ -1,5 +1,6 @@
-URxvt.font: xft:Oxgen Mono-14,MigMix 2M-14
+URxvt.font: xft:Fira Code:size=14,xft:IPAGothic:size=14,xft:Symbola:size=14
 URxvt.reverseVideo: true
 URxvt.letterSpace: -1
 URxvt.scrollBar: false
 URxvt.cursorBlank: true
+
