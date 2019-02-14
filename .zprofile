@@ -1,15 +1,13 @@
+#nvm {{{
+export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.}nvm"
+source $(brew --prefix nvm)/nvm.sh
+#}}}
+
 #pyenv {{{
 export PYENV_ROOT=$HOME/.pyenv
 export PATH=$PYENV_ROOT/bin:$PATH
 eval "$(pyenv init -)"
 eval "$(pyenv virtualenv-init -)"
-#}}}
-
-#nvm {{{
-[ -z "$NVM_DIR" ] && export NVM_DIR="$HOME/.nvm"
-source /usr/share/nvm/nvm.sh
-source /usr/share/nvm/bash_completion
-source /usr/share/nvm/install-nvm-exec
 #}}}
 
 #dot {{{

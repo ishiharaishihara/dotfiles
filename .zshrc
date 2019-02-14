@@ -1,5 +1,7 @@
 autoload -Uz compinit
 compinit
+autoload -U promptinit; promptinit
+prompt pure
 bindkey -v
 setopt correct
 setopt nobeep
