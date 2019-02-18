@@ -6,16 +6,17 @@ if [ ! -d $ZPLUG_HOME ] ; then
     git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 source $ZPLUG_HOME/init.zsh
-zplug "mafredri/zsh-async", from:github
+zplug "mafredri/zsh-async", use:async.zsh, from:github
 zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
-zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+zplug 'zsh-users/zsh-syntax-highlighting', use:zsh-syntax-highlighting.zsh, defer:2, from:github, lazy:true
+zplug 'zsh-users/zsh-completions', from:github, use:'src/_*', lazy:true
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read  -q; then
         echo; zplug install
     fi
 fi
-zplug load --verbose
+zplug load
 #}}}
 eval `dircolors -b`
 autoload colors
