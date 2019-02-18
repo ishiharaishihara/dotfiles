@@ -15,10 +15,12 @@ eval "$(pyenv virtualenv-init -)"
 #}}}
 
 #dot {{{
+export DOT_HOME="$HOME/.zsh/dot/"
+[ ! -d $DOT_HOME ] && git clone 'https://github.com/ssh0/dot' $DOT_HOME
 export DOT_REPO="https://github.com/ishiharaishihara/dotfiles.git"
-export DOT_DIR="$HOME/.dotfiles"
-fpath=($HOME/.zsh/dot $fpath)  # <- for completion
-source $HOME/.zsh/dot/dot.sh
+export DOT_DIR="$HOME/.dotfiles/"
+fpath=($DOT_HOME $fpath)  # <- for completion
+source $DOT_HOME/dot.sh
 #}}}
 
 case ${OSTYPE} in
