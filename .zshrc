@@ -1,3 +1,4 @@
+
 #zplug {{{
 export ZPLUG_HOME="$HOME/.zplug/"
 if [ ! -d $ZPLUG_HOME ] ; then
@@ -7,7 +8,7 @@ fi
 source $ZPLUG_HOME/init.zsh
 zplug "mafredri/zsh-async", from:github
 zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
-zplug 'zsh-users/zsh-syntax-highlighting'
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read  -q; then
@@ -16,9 +17,10 @@ if ! zplug check --verbose; then
 fi
 zplug load --verbose
 #}}}
+eval `dircolors -b`
+autoload colors
+zstyle ':completion:*' list-colors "${LS_COLORS}"
 
-autoload -Uz compinit
-compinit
 bindkey -v
 setopt correct
 setopt nobeep
