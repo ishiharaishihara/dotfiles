@@ -1,6 +1,10 @@
 #nvm {{{
 export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.}nvm"
-source $(brew --prefix nvm)/nvm.sh
+if type brew > /dev/null 2>&1; then
+    source $(brew --prefix nvm)/nvm.sh
+else
+    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+fi
 #}}}
 
 #pyenv {{{
