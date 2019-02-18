@@ -22,6 +22,17 @@ hook_post_update = '''
 '''
 [[plugins]]
 repo = 'nathanaelkane/vim-indent-guides'
+hook_add = '''
+    let g:indent_guides_enable_on_vim_startup = 1
+    let g:indent_guides_color_change_percent = 6
+    let g:indent_guides_start_level = 2
+    let g:indent_guides_guide_size = 1
+    let g:indent_guides_auto_colors = 0
+    augroup MyAutoCmd
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesOdd  ctermbg=8
+        autocmd VimEnter,Colorscheme * :hi IndentGuidesEven ctermbg=7
+    augroup END
+'''
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 hook_add = '''
@@ -30,13 +41,10 @@ hook_add = '''
     \}
 '''
 [[plugins]]
-repo = 'tomasr/molokai'
-hook_add = '''
-    let g:molokai_original = 1
-    let g:rehash256 = 1
-'''
-[[plugins]]
 repo = 'dracula/vim'
+hook_add = '''
+    let g:dracula_colorterm = 0
+'''
 [[plugins]]
 repo = 'scrooloose/nerdtree'
 hook_add = '''

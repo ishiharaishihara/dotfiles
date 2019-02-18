@@ -17,7 +17,7 @@ if has('win32')
     let &shellxquote=' '
     let g:vimproc#download_windows_dll = 1
 else
-    set shell=expand('$SHELL')
+    set shell=$SHELL
 endif
 
 let python3_host_prog=$PYENV_ROOT . "/shims/python3"
@@ -55,11 +55,8 @@ set directory=~/vimtemp
 set backupdir=~/vimtemp
 set viminfo+=n~/vimtemp/viminfo.txt
 set undodir=~/vimtemp
-let g:indent_guides_enable_on_vim_startup = 1
-let g:indent_guides_start_level = 2
-let g:indent_guides_guide_size = 1
 
-"dein
+"dein {{{
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
 let s:config_home = empty($XDG_CONFIG_HOME) ? expand('$HOME/.config') : $XDG_CONFIG_HOME
 let s:data_home = empty($XDG_DATA_HOME) ? expand('$HOME/.local/share') : $XDG_DATA_HOME
@@ -84,11 +81,12 @@ endif
 if dein#check_install()
   call dein#install()
 endif
+"}}}
  
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-set background=dark
 au MyAutoCmd VimEnter * nested colorscheme dracula
+set background=dark
 syntax on
