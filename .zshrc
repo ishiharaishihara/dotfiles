@@ -1,7 +1,26 @@
-autoload -Uz compinit
-compinit
-autoload -U promptinit; promptinit
-prompt pure
+
+#zplug {{{
+export ZPLUG_HOME="$HOME/.zplug/"
+if [ ! -d $ZPLUG_HOME ] ; then
+    mkdir $ZPLUG_HOME
+    git clone https://github.com/zplug/zplug $ZPLUG_HOME
+fi
+source $ZPLUG_HOME/init.zsh
+zplug "mafredri/zsh-async", from:github
+zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
+zplug 'zsh-users/zsh-syntax-highlighting', defer:2
+if ! zplug check --verbose; then
+    printf "Install? [y/N]: "
+    if read  -q; then
+        echo; zplug install
+    fi
+fi
+zplug load --verbose
+#}}}
+eval `dircolors -b`
+autoload colors
+zstyle ':completion:*' list-colors "${LS_COLORS}"
+
 bindkey -v
 setopt correct
 setopt nobeep
