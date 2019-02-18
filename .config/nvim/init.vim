@@ -1,8 +1,7 @@
 augroup MyAutoCmd
     autocmd!
 augroup END
-setlocal foldmethod=indent
-set foldlevel=3
+setlocal foldmethod=marker
 set foldopen=all
 set foldclose=all
 set shellslash
@@ -18,7 +17,7 @@ if has('win32')
     let &shellxquote=' '
     let g:vimproc#download_windows_dll = 1
 else
-    set shell=/usr/bin/zsh
+    set shell=expand('$SHELL')
 endif
 
 let python3_host_prog=$PYENV_ROOT . "/shims/python3"
