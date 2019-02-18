@@ -21,5 +21,14 @@ fpath=($HOME/.zsh/dot $fpath)  # <- for completion
 source $HOME/.zsh/dot/dot.sh
 #}}}
 
+case ${OSTYPE} in
+    darwin*)
+        alias ls='ls -G'
+        ;;
+    linux*)
+        alias ls='ls --color=auto'
+        ;;
+esac
+
 [[ -z $DISPLAY && $XDG_VTNR -eq 1 ]] && exec startx
 
