@@ -10,6 +10,8 @@ zplug "mafredri/zsh-async", use:async.zsh, from:github
 zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
 zplug 'zsh-users/zsh-syntax-highlighting', use:zsh-syntax-highlighting.zsh, defer:2, from:github, lazy:true
 zplug 'zsh-users/zsh-completions', from:github, use:'src/_*', lazy:true
+zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq, lazy:true
+zplug "peco/peco", as:command, from:gh-r, rename-to:peco, lazy:true
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read  -q; then
