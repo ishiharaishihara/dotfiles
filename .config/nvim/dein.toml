@@ -61,3 +61,8 @@ repo = 'mattn/vim-metarw-gdrive'
 depends = ['mattn/webapi-vim', 'kana/vim-metarw']
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+[[plugins]]
+repo = 'tyru/open-browser.vim'
+[[plugins]]
+repo = 'previm/previm'
+depends = ['tyru/open-browser.vim']
