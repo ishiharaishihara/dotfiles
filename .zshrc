@@ -1,25 +1,49 @@
 
 #zplug {{{
-export ZPLUG_HOME="$HOME/.zplug/"
+export ZPLUG_HOME="$HOME/.zplug"
+
 if [ ! -d $ZPLUG_HOME ] ; then
     mkdir $ZPLUG_HOME
     git clone https://github.com/zplug/zplug $ZPLUG_HOME
 fi
 source $ZPLUG_HOME/init.zsh
 zplug "mafredri/zsh-async", use:async.zsh, from:github
-zplug 'sindresorhus/pure', use:pure.zsh, from:github, as:theme
-zplug 'zsh-users/zsh-syntax-highlighting', use:zsh-syntax-highlighting.zsh, defer:2, from:github, lazy:true
-zplug 'zsh-users/zsh-completions', from:github, use:'src/_*', lazy:true
-zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq, lazy:true
-zplug "peco/peco", as:command, from:gh-r, rename-to:peco, lazy:true
+zplug 'sindresorhus/pure', use:pure.zsh, as:theme, from:github
+zplug 'zsh-users/zsh-syntax-highlighting', use:zsh-syntax-highlighting.zsh, defer:2, lazy:true, from:github
+zplug 'zsh-users/zsh-completions', use:'src/_*', lazy:true, from:github
+zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq, lazy:true, from:github
+zplug "peco/peco", as:command, from:gh-r, rename-to:peco, lazy:true, from:github
+zplug "creationix/nvm", use:nvm.sh, from:github
+zplug "ssh0/dot", use:"*.sh" , from:github
+#zplug "pyenv/pyenv", use:"bin/*" ,as:command, from:github
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read  -q; then
         echo; zplug install
     fi
 fi
+
+_is_installed(){
+    zplug list | grep -q "$@"
+}
+
 zplug load
+
+#if _is_installed 'pyenv/pyenv'; then
+    #export PYENV_ROOT="$ZPLUG_HOME/repos/pyenv/pyenv"
+    #eval "$(pyenv init -)"
+#fi
+
+
 #}}}
+case ${OSTYPE} in
+    darwin*)
+        if (( ${+commands[brew]} )) ; then
+            export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+        fi
+        ;;
+esac
+alias ls='ls --color=auto'
 eval `dircolors -b`
 autoload colors
 zstyle ':completion:*' list-colors "${LS_COLORS}"
