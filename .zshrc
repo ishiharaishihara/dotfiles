@@ -15,7 +15,8 @@ zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq, lazy:true, from:githu
 zplug "peco/peco", as:command, from:gh-r, rename-to:peco, lazy:true, from:github
 zplug "creationix/nvm", use:nvm.sh, from:github
 zplug "ssh0/dot", use:"*.sh" , from:github
-zplug "pyenv/pyenv", as:command, use:"bin/*" from:github,
+zplug "pyenv/pyenv", as:command, use:"bin/*" from:github
+zplug "zplug/zplug", hook-build:"zplug --self-manage"
 if ! zplug check --verbose; then
     printf "Install? [y/N]: "
     if read  -q; then
