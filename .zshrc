@@ -45,6 +45,8 @@ case ${OSTYPE} in
         ;;
 esac
 alias ls='ls --color=auto'
+alias repos='ghq list -p | peco'
+alias repo='cd $(repos)'
 eval `dircolors -b`
 autoload colors
 zstyle ':completion:*' list-colors "${LS_COLORS}"
