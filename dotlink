@@ -52,3 +52,4 @@ bin/sound_volume_change_wrapper.sh,bin/sound_volume_change_wrapper.sh
 .zshenv,.zshenv
 .zshrc,.zshrc
 .stalonetrayrc,.stalonetrayrc
+Brewfile,Brewfile
