@@ -90,4 +90,3 @@ endif
 au MyAutoCmd VimEnter * nested colorscheme dracula
 set background=dark
 syntax on
-set runtimepath+=~/workspace/github.com/ishiharaishihara/tamaya/
