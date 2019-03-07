@@ -6,14 +6,23 @@ repo = 'sophacles/vim-processing'
 repo = 'w0rp/ale'
 hook_add = '''
     let g:ale_linters = {
-    \    'php':['phpcs'],
-    \}
+        \   'php':['phpcs'],
+        \   'javascript':['eslint'],
+        \}
     let g:ale_php_phpcs_standard = 'PSR1,PSR2'
     let g:ale_fixers = {
-    \    'php':['phpcbf'],
-    \}
+        \   'php':['phpcbf'],
+        \   'javascript':['prettier'],
+        \   'html':['prettier'],
+        \   'css':['prettier'],
+        \}
     let g:ale_php_phpcbf_standard = 'PSR1,PSR2'
     let g:ale_fix_on_save = 1
+    let g:ale_set_loclist = 0
+    let g:ale_set_auickfix = 1
+    let g:ale_open_list = 1
+    nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+    nmap <silent> <C-j> <Plug>(ale_next_wrap)
 '''
 [[plugins]]
 repo = 'jceb/vim-hier'
