@@ -13,7 +13,7 @@ zplug 'zsh-users/zsh-syntax-highlighting', use:zsh-syntax-highlighting.zsh, defe
 zplug 'zsh-users/zsh-completions', use:'src/_*', lazy:true, from:github
 zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq, lazy:true, from:github
 zplug "peco/peco", as:command, from:gh-r, rename-to:peco, lazy:true, from:github
-zplug "creationix/nvm", use:nvm.sh, from:github
+zplug "creationix/nvm", from:github
 zplug "ssh0/dot", use:"*.sh" , from:github
 zplug "pyenv/pyenv", as:command, use:"bin/*" from:github
 zplug "squizlabs/PHP_CodeSniffer", as:command, lazy:true, use:"bin/*" from:github
@@ -31,7 +31,12 @@ _is_installed(){
 
 zplug load
 
-if _is_installed 'pyenv/pyenv'; then
+if _is_installed 'creationix/nvm'; then
+    export NVM_DIR="${XDG_CONFIG_HOME:-$HOME/.}nvm"
+    $ZPLUG_REPOS/creationix/nvm/nvm.sh
+fi
+
+if _is_installed ''; then
     export PYENV_ROOT="$ZPLUG_HOME/repos/pyenv/pyenv"
     eval "$(pyenv init -)"
 fi
