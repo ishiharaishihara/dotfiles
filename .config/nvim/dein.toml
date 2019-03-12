@@ -1,4 +1,6 @@
 [[plugins]]
+repo='machakann/vim-sandwich'
+[[plugins]]
 repo = 'Shougo/dein.vim'
 [[plugins]]
 repo = 'sophacles/vim-processing'
