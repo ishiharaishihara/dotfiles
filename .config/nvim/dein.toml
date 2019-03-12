@@ -10,10 +10,11 @@ repo = 'sophacles/vim-processing'
 repo = 'w0rp/ale'
 hook_add = '''
     let g:ale_linters = {
-        \   'php':['phpcs'],
+        \   'php':['langserver'],
         \   'javascript':['eslint'],
         \}
-    let g:ale_php_phpcs_standard = 'PSR1,PSR2'
+    let g:ale_php_langserver_use_global = 0
+    let g:ale_php_langserver_executable = $HOME. '/.config/composer/vendor/bin/php-language-server.php'
     let g:ale_fixers = {
         \   'php':['phpcbf'],
         \   'javascript':['prettier'],
