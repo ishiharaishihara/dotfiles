@@ -67,8 +67,12 @@ hook_add = '''
 '''
 [[plugins]]
 repo = 'dracula/vim'
+on_event = 'VimEnter'
 hook_add = '''
+    set background=dark
+    syntax on
     let g:dracula_colorterm = 0
+    au MyAutoCmd VimEnter * nested colorscheme dracula
 '''
 [[plugins]]
 repo = 'scrooloose/nerdtree'
@@ -84,8 +88,6 @@ repo = 'kana/vim-metarw'
 [[plugins]]
 repo = 'mattn/vim-metarw-gdrive'
 depends = ['mattn/webapi-vim', 'kana/vim-metarw']
-[[plugins]]
-repo = 'Shougo/denite.nvim'
 [[plugins]]
 repo = 'tyru/open-browser.vim'
 [[plugins]]

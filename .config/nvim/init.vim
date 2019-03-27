@@ -86,7 +86,3 @@ endif
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
-
-au MyAutoCmd VimEnter * nested colorscheme dracula
-set background=dark
-syntax on
