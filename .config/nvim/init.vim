@@ -45,6 +45,7 @@ set incsearch
 set nowrap
 set wrapscan
 set clipboard=unnamedplus
+set signcolumn=yes
 set hlsearch
 nmap <ESC><ESC> :nohlsearch<CR><Esc>
 
