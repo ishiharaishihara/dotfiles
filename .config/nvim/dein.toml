@@ -11,7 +11,6 @@ repo = 'w0rp/ale'
 hook_add = '''
     let g:ale_linters = {
         \   'php':['langserver'],
-        \   'javascript':['eslint'],
         \}
     let g:ale_php_langserver_use_global = 0
     let g:ale_php_langserver_executable = $HOME. '/.config/composer/vendor/bin/php-language-server.php'
@@ -25,7 +24,6 @@ hook_add = '''
     let g:ale_fix_on_save = 1
     let g:ale_set_loclist = 0
     let g:ale_set_quickfix = 1
-    let g:ale_open_list = 1
     nmap <silent> <C-k> <Plug>(ale_previous_wrap)
     nmap <silent> <C-j> <Plug>(ale_next_wrap)
 '''
@@ -93,3 +91,7 @@ repo = 'tyru/open-browser.vim'
 [[plugins]]
 repo = 'previm/previm'
 depends = ['tyru/open-browser.vim']
+[[plugins]]
+repo = 'airblade/vim-gitgutter'
+[[plugins]]
+repo = 'tpope/vim-fugitive'
