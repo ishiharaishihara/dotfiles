@@ -1,5 +1,6 @@
 augroup MyAutoCmd
     autocmd!
+    autocmd QuickFixCmdPost *grep* cwindow
 augroup END
 setlocal foldmethod=marker
 set foldopen=all

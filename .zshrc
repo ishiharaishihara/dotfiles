@@ -13,6 +13,7 @@ zplug 'zsh-users/zsh-syntax-highlighting', use:zsh-syntax-highlighting.zsh, defe
 zplug 'zsh-users/zsh-completions', use:'src/_*', lazy:true, from:github
 zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq, lazy:true, from:github
 zplug "peco/peco", as:command, from:gh-r, rename-to:peco, lazy:true, from:github
+zplug "heppu/gkill", as:command, from:gh-r, rename-to:gkill, lazy:true, from:github
 zplug "creationix/nvm", use:nvm.sh, from:github
 zplug "ssh0/dot", use:"*.sh" , from:github
 zplug "pyenv/pyenv", as:command, use:"bin/*" from:github
