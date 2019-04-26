@@ -6,6 +6,7 @@ path=(
     /usr/local/bin(N-/)
     $HOME/bin(N-/) 
     $HOME/.config/composer/vendor/bin(N-/) 
+    $HOME/.local/bin(N-/) 
     $path
 )
 manpath=(
