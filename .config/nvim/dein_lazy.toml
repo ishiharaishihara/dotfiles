@@ -1,11 +1,13 @@
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-on_event = 'BufEnter'
+on_cmd = 'Denite'
 hook_source = '''
     if executable('rg')
         call denite#custom#var('file/rec', 'command',
         \ ['rg', '--files', '--glob', '!.git'])
     endif
+'''
+hook_add = '''
     nmap <silent> <C-d><C-t> :<C-u>Denite filetype<CR>
     nmap <silent> <C-d><C-p> :<C-u>Denite file_rec<CR>
     nmap <silent> <C-d><C-g> :<C-u>Denite grep<CR>
