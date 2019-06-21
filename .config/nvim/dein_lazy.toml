@@ -9,7 +9,7 @@ hook_source = '''
 '''
 hook_add = '''
     nmap <silent> <C-d><C-t> :<C-u>Denite filetype<CR>
-    nmap <silent> <C-d><C-p> :<C-u>Denite file_rec<CR>
+    nmap <silent> <C-d><C-p> :<C-u>Denite file/rec<CR>
     nmap <silent> <C-d><C-g> :<C-u>Denite grep<CR>
     nmap <silent> <C-d><C-j> :<C-u>DeniteCursorWord grep<CR>
     nmap <silent> <C-d><C-d> :<C-u>call denite#start([{'name': 'file_rec', 'args': ['~/.dotfiles']}])<CR>
