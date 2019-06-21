@@ -16,7 +16,6 @@ if has('win32')
     set shell=powershell shellquote=\" shellpipe=\| shellredir=>
     set shellcmdflag=-Command
     let &shellxquote=' '
-    let g:vimproc#download_windows_dll = 1
 else
     set shell=$SHELL
 endif
