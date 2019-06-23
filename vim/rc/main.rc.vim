@@ -25,6 +25,8 @@ else
 endif
 
 let python3_host_prog=$PYENV_ROOT . "/shims/python3"
+let $NVIM_PYTHON_LOG_FILE='/tmp/nvim_log'
+let $NVIM_PYTHON_LOG_LEVEL='DEBUG'
 
 
 set number
@@ -58,8 +60,10 @@ set imsearch=-1
 
 set directory=~/vimtemp
 set backupdir=~/vimtemp
-set viminfo+=n~/vimtemp/viminfo.txt
 set undodir=~/vimtemp
+if !has('nvim')
+    set viminfo+=n~/vimtemp/viminfo.txt
+endif
 
 "dein {{{
 let s:cache_home = empty($XDG_CACHE_HOME) ? expand('~/.cache') : $XDG_CACHE_HOME
@@ -73,12 +77,14 @@ endif
 let g:dein#install_process_timeout = 600
 
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
-let s:toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
-let s:lazy_toml_file = fnamemodify(expand('<sfile>'), ':h').'/dein_lazy.toml'
+let s:dein_toml = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
+let s:dein_lazy_toml = fnamemodify(expand('<sfile>'), ':h').'/dein_lazy.toml'
+let s:dein_ft_toml = fnamemodify(expand('<sfile>'), ':h').'/dein_lazy.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
-  call dein#load_toml(s:toml_file,      {'lazy': 0})
-  call dein#load_toml(s:lazy_toml_file, {'lazy': 1})
+  call dein#load_toml(s:dein_toml,      {'lazy': 0})
+  call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
+  call dein#load_toml(s:dein_ft_toml)
   call dein#end()
   call dein#save_state()
 endif
