@@ -1,0 +1,13 @@
+[ftplugin]
+_='''
+'''
+
+pug='''
+setlocal shiftwidth=2
+setlocal tabstop=2
+'''
+
+javascript='''
+set tabstop=2
+set shiftwidth=2
+'''

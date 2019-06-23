@@ -53,3 +53,5 @@ bin/sound_volume_change_wrapper.sh,bin/sound_volume_change_wrapper.sh
 .zshrc,.zshrc
 .stalonetrayrc,.stalonetrayrc
 Brewfile,Brewfile
+.vimrc,.vimrc
+vim/main.vim,vim/main.vim
