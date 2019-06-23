@@ -7,7 +7,6 @@ augroup MyAutoCmd
     autocmd!
     autocmd QuickFixCmdPost *grep* cwindow
 augroup END
-
 setlocal foldmethod=marker
 set foldopen=all
 set foldclose=all
@@ -25,6 +24,9 @@ else
 endif
 
 let python3_host_prog=$PYENV_ROOT . "/shims/python3"
+if !has('nvim')
+    set pyx=3
+endif
 let $NVIM_PYTHON_LOG_FILE='/tmp/nvim_log'
 let $NVIM_PYTHON_LOG_LEVEL='DEBUG'
 
