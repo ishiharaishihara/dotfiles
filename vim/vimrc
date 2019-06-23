@@ -1,0 +1,3 @@
+if 1
+    execute 'source' fnamemodify(resolve(expand('<sfile>')),':h').'/rc/main.rc.vim'
+endif

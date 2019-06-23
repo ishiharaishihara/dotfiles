@@ -1,1 +1,1 @@
-execute 'source' expand($HOME).'/vim/main.vim'
+execute 'source' expand($HOME).'/vim/rc/main.rc.vim'

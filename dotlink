@@ -33,9 +33,6 @@
 
 .config/mpv/lua-settings/osc.conf,.config/mpv/lua-settings/osc.conf
 .config/mpv/mpv.conf,.config/mpv/mpv.conf
-.config/nvim/dein.toml,.config/nvim/dein.toml
-.config/nvim/dein_lazy.toml,.config/nvim/dein_lazy.toml
-.config/nvim/init.vim,.config/nvim/init.vim
 .config/ranger/commands.py,.config/ranger/commands.py
 .config/ranger/commands_full.py,.config/ranger/commands_full.py
 .config/ranger/scope.sh,.config/ranger/scope.sh
@@ -53,5 +50,5 @@ bin/sound_volume_change_wrapper.sh,bin/sound_volume_change_wrapper.sh
 .zshrc,.zshrc
 .stalonetrayrc,.stalonetrayrc
 Brewfile,Brewfile
-.vimrc,.vimrc
-vim/main.vim,vim/main.vim
+vim/vimrc,.vimrc
+vim/vimrc,.config/nvim/init.vim
