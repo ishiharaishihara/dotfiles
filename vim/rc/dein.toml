@@ -1,6 +1,4 @@
 [[plugins]]
-repo='lambdalisue/vim-pyenv'
-[[plugins]]
 repo='soramugi/auto-ctags.vim'
 hook_add = '''
     let g:auto_ctags = 1
