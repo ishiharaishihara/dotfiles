@@ -4,7 +4,7 @@ on_cmd = 'Denite'
 hook_source = '''
     if executable('rg')
         call denite#custom#var('file/rec', 'command',
-        \ ['rg', '--files', '--glob', '!.git'])
+        \ ['rg', '--files', '--unrestricted', '--hidden', '--glob', '!.git'])
     endif
 '''
 hook_add = '''
