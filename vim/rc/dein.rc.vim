@@ -9,14 +9,16 @@ endif
 let g:dein#install_process_timeout = 600
 
 let &runtimepath = s:dein_repo_dir .",". &runtimepath
-let s:dein_toml = fnamemodify(expand('<sfile>'), ':h').'/dein.toml'
-let s:dein_lazy_toml = fnamemodify(expand('<sfile>'), ':h').'/dein_lazy.toml'
-let s:dein_ft_toml = fnamemodify(expand('<sfile>'), ':h').'/dein_lazy.toml'
+let s:dein_toml = g:rc_dir . 'dein.toml'
+let s:dein_lazy_toml = g:rc_dir . 'dein_lazy.toml'
+let s:dein_ft_toml = g:rc_dir . 'deinft.toml'
 if dein#load_state(s:dein_dir)
   call dein#begin(s:dein_dir)
-  call dein#load_toml(s:dein_toml,      {'lazy': 0})
+
+  call dein#load_toml(s:dein_toml,{'lazy': 0})
   call dein#load_toml(s:dein_lazy_toml, {'lazy': 1})
   call dein#load_toml(s:dein_ft_toml)
+
   call dein#end()
   call dein#save_state()
 endif
