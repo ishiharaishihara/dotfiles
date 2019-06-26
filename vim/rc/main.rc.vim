@@ -1,5 +1,7 @@
 let g:rc_dir = expand('<sfile>:p:h') . '/'
 
+let &runtimepath = g:rc_dir .",". &runtimepath
+
 function! s:source(file, ...)
     let use_global = get(a:000,0,!has('vim_starting'))
     if !use_global
@@ -40,4 +42,5 @@ nnoremap k gk
 
 call s:source('dein.rc.vim')
 call s:source('options.rc.vim')
+
 
