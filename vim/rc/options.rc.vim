@@ -2,6 +2,7 @@ set foldmethod=marker
 set foldopen=all
 set foldclose=all
 set shellslash
+set autoread
 set hidden
 set showcmd
 set number
@@ -33,11 +34,11 @@ set signcolumn=yes
 set iminsert=0
 set imsearch=-1
 
+set directory=~/vimtemp
+set backupdir=~/vimtemp
+set undodir=~/vimtemp
 if !has('nvim')
     set viminfo+=n~/vimtemp/viminfo.txt
-    set directory=~/vimtemp
-    set backupdir=~/vimtemp
-    set undodir=~/vimtemp
 endif
 
 if has('conceal')
