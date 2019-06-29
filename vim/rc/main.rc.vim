@@ -42,5 +42,3 @@ nnoremap k gk
 
 call s:source('dein.rc.vim')
 call s:source('options.rc.vim')
-
-
