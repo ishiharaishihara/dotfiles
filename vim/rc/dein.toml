@@ -282,3 +282,11 @@ repo = 'roxma/vim-hug-neovim-rpc'
 on_if='!has("nvim")'
 [[plugins]]
 repo = 'roxma/nvim-yarp'
+[[plugins]]
+repo = 'osyo-manga/vim-precious'
+depends = ['Shougo/context_filetype.vim']
+[[plugins]]
+repo = 'Shougo/context_filetype.vim'
+[[plugins]]
+repo = 'cespare/vim-toml'
+on_ft = 'toml'
