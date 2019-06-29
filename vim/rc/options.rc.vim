@@ -44,3 +44,6 @@ endif
 if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
+
+colorscheme dracula
+syntax on

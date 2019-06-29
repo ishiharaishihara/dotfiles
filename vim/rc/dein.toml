@@ -259,10 +259,7 @@ hook_add = '''
 repo = 'dracula/vim'
 on_event = 'VimEnter'
 hook_add = '''
-    set background=dark
-    syntax on
     let g:dracula_colorterm = 0
-    au MyAutoCmd VimEnter * nested colorscheme dracula
 '''
 [[plugins]]
 repo = 'mattn/webapi-vim'
