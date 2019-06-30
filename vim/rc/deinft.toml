@@ -2,6 +2,16 @@
 _='''
 '''
 
+vim='''
+setlocal shiftwidth=2
+setlocal tabstop=2
+'''
+
+toml='''
+setlocal shiftwidth=2
+setlocal tabstop=2
+'''
+
 pug='''
 setlocal shiftwidth=2
 setlocal tabstop=2
