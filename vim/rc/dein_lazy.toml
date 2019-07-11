@@ -5,12 +5,19 @@ hook_source = '''
     if executable('rg')
         call denite#custom#var('file/rec', 'command',
         \ ['rg', '--files', '--unrestricted', '--hidden', '--glob', '!.git'])
+        call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
+        call denite#custom#var('grep', 'recursive_opts', [])
+        call denite#custom#var('grep', 'final_opts', [])
+        call denite#custom#var('grep', 'separator', ['--'])
+        call denite#custom#var('grep', 'default_opts',
+              \ ['-i', '--vimgrep', '--no-heading','--smart-case'])
     endif
 '''
 hook_add = '''
     nmap <silent> <C-d><C-t> :<C-u>Denite filetype<CR>
     nmap <silent> <C-d><C-p> :<C-u>Denite file/rec<CR>
     nmap <silent> <C-d><C-g> :<C-u>Denite grep<CR>
+    nmap <silent> <C-d><C-r> :<C-u>Denite -resume<CR>
     nmap <silent> <C-d><C-j> :<C-u>DeniteCursorWord grep<CR>
     nmap <silent> <C-d><C-d> :<C-u>call denite#start([{'name': 'file/rec', 'args': ['~/.dotfiles']}])<CR>
     autocmd FileType denite call s:denite_my_settings()
