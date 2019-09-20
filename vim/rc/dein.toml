@@ -96,7 +96,6 @@ hook_add = '''
     let g:ale_fixers = {
         \   'php':['phpcbf'],
         \   'javascript':['prettier'],
-        \   'html':['prettier'],
         \   'css':['prettier'],
         \}
     let g:ale_php_phpcbf_standard = 'PSR1,PSR2'
