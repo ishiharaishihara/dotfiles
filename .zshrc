@@ -26,6 +26,10 @@ if ! zplug check --verbose; then
     fi
 fi
 
+ghq-list(){
+    find -E $GHQ_ROOT -name .git -exec dirname {} + -maxdepth 7 -type d -not -iregex "(vendor|node_modules)" | sed -e "s#$GHQ_ROOT##g"
+}
+
 _is_installed(){
     zplug list | grep -q "$@"
 }
@@ -47,8 +51,14 @@ case ${OSTYPE} in
         ;;
 esac
 alias ls='ls --color=auto'
-alias repos='ghq list -p | peco'
-alias repo='cd $(repos)'
+alias repos='ghq-list | peco'
+
+repo() {
+    local dir="$(repos)"
+    if [ ! -z "$dir" ] ; then
+        cd "$GHQ_ROOT/$dir"
+    fi
+}
 eval `dircolors -b`
 autoload colors
 zstyle ':completion:*' list-colors "${LS_COLORS}"
