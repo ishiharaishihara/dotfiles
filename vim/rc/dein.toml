@@ -185,3 +185,7 @@ hook_add = '''
     \   'indentation': '    '
     \}
 '''
+[[plugins]]
+repo='leafgarland/typescript-vim'
+[[plugins]]
+repo='peitalin/vim-jsx-typescript'
