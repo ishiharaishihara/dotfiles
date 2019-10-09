@@ -21,3 +21,8 @@ javascript='''
 set tabstop=2
 set shiftwidth=2
 '''
+
+json='''
+setlocal conceallevel=0
+setlocal concealcursor=
+'''
