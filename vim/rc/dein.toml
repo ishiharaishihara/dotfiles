@@ -112,7 +112,7 @@ build = 'bash install.sh'
 hook_add = '''
 let g:LanguageClient_serverCommands = {
     \ 'php': ['php','~/.config/composer/vendor/bin/php-language-server.php'],
-    \ 'javascript': ['javascript-typescript-stdio'],
+    \ 'javascript': [$NVM_BIN . '/javascript-typescript-stdio'],
     \ }
 '''
 
@@ -143,6 +143,9 @@ on_event = 'VimEnter'
 hook_add = '''
     let g:dracula_colorterm = 0
 '''
+[[plugins]]
+repo = 'altercation/vim-colors-solarized'
+on_event = 'VimEnter'
 [[plugins]]
 repo = 'mattn/webapi-vim'
 [[plugins]]

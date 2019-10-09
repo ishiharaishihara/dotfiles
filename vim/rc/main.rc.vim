@@ -2,6 +2,8 @@ let g:rc_dir = expand('<sfile>:p:h') . '/'
 
 let &runtimepath = g:rc_dir .",". &runtimepath
 
+let g:vim_json_syntax_conceal = 0
+
 function! s:source(file, ...)
     let use_global = get(a:000,0,!has('vim_starting'))
     if !use_global

@@ -45,5 +45,6 @@ if has('conceal')
   set conceallevel=2 concealcursor=i
 endif
 
-colorscheme dracula
+set background=dark
+colorscheme solarized
 syntax on

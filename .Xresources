@@ -5,21 +5,62 @@ URxvt.scrollBar: false
 URxvt.cursorBlank: true
 
 ! Dracula Xresources palette
-URxvt.foreground: #F8F8F2
-URxvt.background: #282A36
-URxvt.color0:     #000000
-URxvt.color8:     #4D4D4D
-URxvt.color1:     #FF5555
-URxvt.color9:     #FF6E67
-URxvt.color2:     #50FA7B
-URxvt.color10:    #5AF78E
-URxvt.color3:     #F1FA8C
-URxvt.color11:    #F4F99D
-URxvt.color4:     #BD93F9
-URxvt.color12:    #CAA9FA
-URxvt.color5:     #FF79C6
-URxvt.color13:    #FF92D0
-URxvt.color6:     #8BE9FD
-URxvt.color14:    #9AEDFE
-URxvt.color7:     #BFBFBF
-URxvt.color15:    #E6E6E6
+!URxvt.foreground: #F8F8F2
+!URxvt.background: #282A36
+!URxvt.color0:     #000000
+!URxvt.color8:     #4D4D4D
+!URxvt.color1:     #FF5555
+!URxvt.color9:     #FF6E67
+!URxvt.color2:     #50FA7B
+!URxvt.color10:    #5AF78E
+!URxvt.color3:     #F1FA8C
+!URxvt.color11:    #F4F99D
+!URxvt.color4:     #BD93F9
+!URxvt.color12:    #CAA9FA
+!URxvt.color5:     #FF79C6
+!URxvt.color13:    #FF92D0
+!URxvt.color6:     #8BE9FD
+!URxvt.color14:    #9AEDFE
+!URxvt.color7:     #BFBFBF
+!URxvt.color15:    #E6E6E6
+
+! Source http://github.com/altercation/solarized
+*foreground: #657b83
+*background: #002b36
+!!*fading: 40
+*fadeColor: #002b36
+*cursorColor: #93a1a1
+*pointerColorBackground: #586e75
+*pointerColorForeground: #93a1a1
+
+!! black dark/light
+*color0: #073642
+*color8: #002b36
+
+!! red dark/light
+*color1: #dc322f
+*color9: #cb4b16
+
+!! green dark/light
+*color2: #859900
+*color10: #586e75
+
+!! yellow dark/light
+*color3: #b58900
+*color11: #657b83
+
+!! blue dark/light
+*color4: #268bd2
+*color12: #839496
+
+!! magenta dark/light
+*color5: #d33682
+*color13: #6c71c4
+
+!! cyan dark/light
+*color6: #2aa198
+*color14: #93a1a1
+
+!! white dark/light
+*color7: #eee8d5
+*color15: #fdf6e3
