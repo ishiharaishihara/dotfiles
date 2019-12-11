@@ -9,6 +9,7 @@ path=(
     $HOME/bin(N-/) 
     $HOME/.config/composer/vendor/bin(N-/) 
     $HOME/.local/bin(N-/) 
+    $HOME/homebrew/bin(N-/)
     $path
 )
 manpath=(
