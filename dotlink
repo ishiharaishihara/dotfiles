@@ -52,3 +52,4 @@ bin/sound_volume_change_wrapper.sh,bin/sound_volume_change_wrapper.sh
 Brewfile,Brewfile
 vim/vimrc,.vimrc
 vim/vimrc,.config/nvim/init.vim
+$HOME/.dotfiles/.config/iterm2/com.googlecode.iterm2.plist,.config/iterm2/com.googlecode.iterm2.plist
