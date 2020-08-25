@@ -1,4 +1,21 @@
-
+#nvm lazy load {{{
+nvm() {
+    unset -f nvm
+    local script_path="${NVM_DIR}/nvm.sh"
+    if [ ! -e "${script_path}" ]; then
+        if is_exists "curl"; then
+            curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+        elif is_exists "wget"; then
+            wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
+        else
+          echo >&2 'You need curl, or wget'
+          exit 1
+        fi
+    fi
+    source "${NVM_DIR}/nvm.sh"
+    nvm "$@"
+}
+#}}}
 #zplug {{{
 export ZPLUG_HOME="$HOME/.zplug"
 
@@ -14,7 +31,6 @@ zplug 'zsh-users/zsh-completions', use:'src/_*', lazy:true, from:github
 zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq, lazy:true, from:github
 zplug "peco/peco", as:command, from:gh-r, rename-to:peco, lazy:true, from:github
 zplug "heppu/gkill", as:command, from:gh-r, rename-to:gkill, lazy:true, from:github
-zplug "creationix/nvm", use:nvm.sh, from:github
 zplug "ssh0/dot", use:"*.sh" , from:github
 zplug "pyenv/pyenv", as:command, use:"bin/*" from:github
 zplug "squizlabs/PHP_CodeSniffer", as:command, lazy:true, use:"bin/*" from:github
