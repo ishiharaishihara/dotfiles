@@ -1,7 +1,9 @@
+eval "$(pyenv init -)"
 #nvm lazy load {{{
 nvm() {
     unset -f nvm
-    local script_path="${NVM_DIR}/nvm.sh"
+    local script_path="${NVM_DIR:-$HOME/.nvm}/nvm.sh"
+    echo ${script_path}
     if [ ! -e "${script_path}" ]; then
         if is_exists "curl"; then
             curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
@@ -15,6 +17,7 @@ nvm() {
     source "${NVM_DIR}/nvm.sh"
     nvm "$@"
 }
+
 #}}}
 #zplug {{{
 export ZPLUG_HOME="$HOME/.zplug"
@@ -31,8 +34,6 @@ zplug 'zsh-users/zsh-completions', use:'src/_*', lazy:true, from:github
 zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq, lazy:true, from:github
 zplug "peco/peco", as:command, from:gh-r, rename-to:peco, lazy:true, from:github
 zplug "heppu/gkill", as:command, from:gh-r, rename-to:gkill, lazy:true, from:github
-zplug "ssh0/dot", use:"*.sh" , from:github
-zplug "pyenv/pyenv", as:command, use:"bin/*" from:github
 zplug "squizlabs/PHP_CodeSniffer", as:command, lazy:true, use:"bin/*" from:github
 zplug "zplug/zplug", hook-build:"zplug --self-manage"
 if ! zplug check --verbose; then
@@ -52,10 +53,6 @@ _is_installed(){
 
 zplug load
 
-if _is_installed 'pyenv/pyenv'; then
-    export PYENV_ROOT="$ZPLUG_HOME/repos/pyenv/pyenv"
-    eval "$(pyenv init -)"
-fi
 
 
 #}}}
