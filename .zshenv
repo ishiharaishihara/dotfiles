@@ -14,6 +14,7 @@ path=(
     $HOME/.config/composer/vendor/bin(N-/) 
     $HOME/.local/bin(N-/) 
     $HOME/homebrew/bin(N-/)
+    $HOME/.cabal/bin:$PATH(N-/)
     $PYENV_ROOT/bin:$PATH(N-/)
     $GOPATH/bin:$PATH(N-/)
     $path
