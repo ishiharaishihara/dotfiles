@@ -1,3 +1,6 @@
+if [ ! -d "${PYENV_ROOT}" ]; then
+    git clone https://github.com/pyenv/pyenv.git ~/.pyenv
+fi
 eval "$(pyenv init -)"
 #nvm lazy load {{{
 nvm() {
@@ -31,7 +34,6 @@ zplug "mafredri/zsh-async", use:async.zsh, from:github
 zplug 'sindresorhus/pure', use:pure.zsh, as:theme, from:github
 zplug 'zsh-users/zsh-syntax-highlighting', use:zsh-syntax-highlighting.zsh, defer:2, lazy:true, from:github
 zplug 'zsh-users/zsh-completions', use:'src/_*', lazy:true, from:github
-zplug "motemen/ghq", as:command, from:gh-r, rename-to:ghq, lazy:true, from:github
 zplug "peco/peco", as:command, from:gh-r, rename-to:peco, lazy:true, from:github
 zplug "heppu/gkill", as:command, from:gh-r, rename-to:gkill, lazy:true, from:github
 zplug "squizlabs/PHP_CodeSniffer", as:command, lazy:true, use:"bin/*" from:github
@@ -42,10 +44,6 @@ if ! zplug check --verbose; then
         echo; zplug install
     fi
 fi
-
-ghq-list(){
-    find -E $GHQ_ROOT -name .git -exec dirname {} + -maxdepth 7 -type d -not -iregex "(vendor|node_modules)" | sed -e "s#$GHQ_ROOT##g"
-}
 
 _is_installed(){
     zplug list | grep -q "$@"
@@ -63,8 +61,16 @@ case ${OSTYPE} in
         fi
         ;;
 esac
-alias ls='ls --color=auto'
-alias repos='ghq-list | peco'
+
+if [ type lsd > /dev/null ];then
+    alias ls='lsd'
+elif [ ls --version | grep GNU > /dev/null ];then
+    alias ls='ls --color=auto'
+else
+    alias ls='ls -G'
+fi
+
+alias repos='ghq list -p | fzf --preview "cat {}/README.md"'
 
 repo() {
     local dir="$(repos)"
