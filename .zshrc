@@ -62,6 +62,10 @@ case ${OSTYPE} in
         ;;
 esac
 
+if [ type bat > /dev/null ];then
+    alias cat='bat'
+fi
+
 if [ type lsd > /dev/null ];then
     alias ls='lsd'
 elif [ ls --version | grep GNU > /dev/null ];then
