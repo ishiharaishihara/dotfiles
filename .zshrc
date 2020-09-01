@@ -22,38 +22,6 @@ nvm() {
 }
 
 #}}}
-#zplug {{{
-export ZPLUG_HOME="$HOME/.zplug"
-
-if [ ! -d $ZPLUG_HOME ] ; then
-    mkdir $ZPLUG_HOME
-    git clone https://github.com/zplug/zplug $ZPLUG_HOME
-fi
-source $ZPLUG_HOME/init.zsh
-zplug "mafredri/zsh-async", use:async.zsh, from:github
-zplug 'sindresorhus/pure', use:pure.zsh, as:theme, from:github
-zplug 'zsh-users/zsh-syntax-highlighting', use:zsh-syntax-highlighting.zsh, defer:2, lazy:true, from:github
-zplug 'zsh-users/zsh-completions', use:'src/_*', lazy:true, from:github
-zplug "peco/peco", as:command, from:gh-r, rename-to:peco, lazy:true, from:github
-zplug "heppu/gkill", as:command, from:gh-r, rename-to:gkill, lazy:true, from:github
-zplug "squizlabs/PHP_CodeSniffer", as:command, lazy:true, use:"bin/*" from:github
-zplug "zplug/zplug", hook-build:"zplug --self-manage"
-if ! zplug check --verbose; then
-    printf "Install? [y/N]: "
-    if read  -q; then
-        echo; zplug install
-    fi
-fi
-
-_is_installed(){
-    zplug list | grep -q "$@"
-}
-
-zplug load
-
-
-
-#}}}
 case ${OSTYPE} in
     darwin*)
         if (( ${+commands[brew]} )) ; then
@@ -62,11 +30,11 @@ case ${OSTYPE} in
         ;;
 esac
 
-if [ type bat > /dev/null ];then
+if type bat > /dev/null;then
     alias cat='bat'
 fi
 
-if [ type lsd > /dev/null ];then
+if type lsd > /dev/null;then
     alias ls='lsd'
 elif [ ls --version | grep GNU > /dev/null ];then
     alias ls='ls --color=auto'
