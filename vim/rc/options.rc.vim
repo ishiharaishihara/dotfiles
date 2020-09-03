@@ -1,6 +1,10 @@
-set foldmethod=marker
-set foldopen=all
-set foldclose=all
+if !&diff
+  set foldmethod=marker
+  set foldopen=all
+  set foldclose=all
+endif
+
+
 set shellslash
 set autoread
 set hidden
