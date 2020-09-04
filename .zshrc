@@ -57,8 +57,10 @@ case ${OSTYPE} in
         ;;
 esac
 
+PREVIEW_COMMAND="cat"
 if type bat > /dev/null;then
     alias cat='bat'
+    PREVIEW_COMMAND="bat --color=always"
 fi
 
 if type lsd > /dev/null;then
@@ -69,12 +71,12 @@ else
     alias ls='ls -G'
 fi
 
-alias repos='ghq list -p | fzf --preview "cat {}/README.md"'
+alias repos='ghq list -p | fzf --preview "'"${PREVIEW_COMMAND}"' {}/README.md"'
 
 repo() {
     local dir="$(repos)"
     if [ ! -z "$dir" ] ; then
-        cd "$GHQ_ROOT/$dir"
+        cd "$dir"
     fi
 }
 eval `dircolors -b`
