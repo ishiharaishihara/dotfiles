@@ -88,3 +88,6 @@ on_ft = ['javascript']
 [[plugins]]
 repo = 'digitaltoad/vim-pug'
 on_ft = ['pug']
+[[plugins]]
+repo = 'chrisbra/csv.vim'
+on_ft = ['csv']
