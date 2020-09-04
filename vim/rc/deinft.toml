@@ -23,6 +23,7 @@ set shiftwidth=2
 '''
 
 json='''
+let g:vim_json_syntax_conceal = 0
 setlocal conceallevel=0
 setlocal concealcursor=
 '''
