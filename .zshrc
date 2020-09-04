@@ -19,8 +19,8 @@ zinit light-mode for \
     zinit-zsh/z-a-rust \
     zinit-zsh/z-a-as-monitor \
     zinit-zsh/z-a-patch-dl \
-    zsh-users/zsh-completions \
     zinit-zsh/z-a-bin-gem-node \
+    zdharma/fast-syntax-highlighting \
     zsh-users/zsh-completions \
 
 ### End of Zinit's installer chunk
