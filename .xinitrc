@@ -54,6 +54,5 @@ fi
 
 setxkbmap -option ctrl:swapcaps
 
-urxvtd --quiet --fork --opendisplay
 xss-lock -- /usr/bin/i3lock -i ~/Downloads/gopherbw.png -n &
 exec xmonad
