@@ -26,7 +26,7 @@ main=do
   xproc <- spawnPipe "xmobar"
   xmonad $ ewmh $ docks $ def
     { 
-    terminal = "urxvtc",
+    terminal = "alacritty",
     manageHook = manageDocks <+>(isFullscreen --> doFullFloat)<+> manageHook def,
     layoutHook = toggleLayouts (noBorders Full) $ avoidStruts $ layoutHook def,
     handleEventHook = fullscreenEventHook <+> handleEventHook def,
@@ -36,8 +36,8 @@ main=do
     `additionalKeysP`
     [
       ("M-f", sendMessage ToggleLayout),
-      ("M-v", spawn "urxvtc -e nvim"),
-      ("M4-e", spawn "urxvtc -e ranger"),
+      ("M-v", spawn "alacritty -e nvim"),
+      ("M4-e", spawn "alacritty -e ranger"),
       ("M4-b", spawn "chromium"),
       ("M4-l", spawn "i3lock -n -i ~/Downloads/gopherbw.png"),
       ("<XF86AudioRaiseVolume>", spawn "sound_volume_change_wrapper.sh +"),
