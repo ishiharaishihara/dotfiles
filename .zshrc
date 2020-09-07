@@ -21,7 +21,9 @@ zinit light-mode for \
     zinit-zsh/z-a-patch-dl \
     zinit-zsh/z-a-bin-gem-node \
     zdharma/fast-syntax-highlighting \
-    zsh-users/zsh-completions \
+
+zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
+    zsh-users/zsh-completions 
 
 ### End of Zinit's installer chunk
 
