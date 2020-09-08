@@ -144,7 +144,7 @@ hook_add = '''
     let g:dracula_colorterm = 0
 '''
 [[plugins]]
-repo = 'altercation/vim-colors-solarized'
+repo = 'lifepillar/vim-solarized8'
 on_event = 'VimEnter'
 [[plugins]]
 repo = 'mattn/webapi-vim'

@@ -37,9 +37,9 @@ nvm() {
     local script_path="${NVM_DIR:-$HOME/.nvm}/nvm.sh"
     echo ${script_path}
     if [ ! -e "${script_path}" ]; then
-        if is_exists "curl"; then
+        if type curl > /dev/null; then
             curl https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
-        elif is_exists "wget"; then
+        elif type wget > /dev/null; then
             wget -qO- https://raw.githubusercontent.com/nvm-sh/nvm/v0.35.3/install.sh | bash
         else
           echo >&2 'You need curl, or wget'
@@ -89,3 +89,4 @@ bindkey -v
 setopt correct
 setopt nobeep
 setopt HIST_IGNORE_DUPS
+[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion

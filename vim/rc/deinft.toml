@@ -27,3 +27,11 @@ let g:vim_json_syntax_conceal = 0
 setlocal conceallevel=0
 setlocal concealcursor=
 '''
+
+denite='''
+setlocal winblend=30
+'''
+
+denite-filter='''
+setlocal winblend=30
+'''
