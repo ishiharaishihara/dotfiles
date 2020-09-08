@@ -38,6 +38,9 @@ set signcolumn=yes
 set iminsert=0
 set imsearch=-1
 
+set termguicolors
+set pumblend=30
+
 set directory=~/vimtemp
 set backupdir=~/vimtemp
 set undodir=~/vimtemp
@@ -50,5 +53,5 @@ if has('conceal')
 endif
 
 set background=dark
-colorscheme solarized
+colorscheme solarized8
 syntax on

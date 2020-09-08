@@ -2,15 +2,24 @@
 repo = 'Shougo/denite.nvim'
 on_cmd = 'Denite'
 hook_source = '''
+    let s:denite_win_width_percent = 0.85
+    let s:denite_win_height_percent = 0.7
+    call denite#custom#option('default',{
+          \ 'split': 'floating', 
+          \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
+          \ 'wincol': float2nr((&columns - (&columns * s:denite_win_width_percent)) / 2),
+          \ 'winheight': float2nr(&lines * s:denite_win_height_percent),
+          \ 'winrow': float2nr((&lines - (&lines * s:denite_win_height_percent)) / 2),
+          \ })
     if executable('rg')
-        call denite#custom#var('file/rec', 'command',
-        \ ['rg', '--files', '--unrestricted', '--hidden', '--glob', '!.git'])
-        call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
-        call denite#custom#var('grep', 'recursive_opts', [])
-        call denite#custom#var('grep', 'final_opts', [])
-        call denite#custom#var('grep', 'separator', ['--'])
-        call denite#custom#var('grep', 'default_opts',
-              \ ['-i', '--vimgrep', '--no-heading','--smart-case'])
+      call denite#custom#var('file/rec', 'command',
+            \ ['rg', '--files', '--unrestricted', '--hidden', '--glob', '!.git'])
+      call denite#custom#var('grep', 'command', ['rg', '--threads', '1'])
+      call denite#custom#var('grep', 'recursive_opts', [])
+      call denite#custom#var('grep', 'final_opts', [])
+      call denite#custom#var('grep', 'separator', ['--'])
+      call denite#custom#var('grep', 'default_opts',
+            \ ['-i', '--vimgrep', '--no-heading','--smart-case'])
     endif
 '''
 hook_add = '''
@@ -42,6 +51,7 @@ hook_add = '''
 repo='Shougo/deoplete.nvim'
 hook_source = '''
     let g:deoplete#enable_at_startup = 1
+    let g:float_preview#docked = 1
 '''
 on_i = 1
 [[plugins]]

@@ -1,3 +1,4 @@
+set verbosefile=/tmp/vim.log
 let g:rc_dir = expand('<sfile>:p:h') . '/'
 
 let &runtimepath = g:rc_dir .",". &runtimepath
