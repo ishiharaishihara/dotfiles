@@ -1,9 +1,10 @@
 [[plugins]]
 repo = 'Shougo/denite.nvim'
-on_cmd = 'Denite'
+depends = 'vim-devicons'
 hook_source = '''
     let s:denite_win_width_percent = 0.85
     let s:denite_win_height_percent = 0.7
+    call denite#custom#source('file/rec,file_mru,file/old,buffer,directory/rec,directory_mru', 'converters', ['devicons_denite_converter'])
     call denite#custom#option('default',{
           \ 'split': 'floating', 
           \ 'winwidth': float2nr(&columns * s:denite_win_width_percent),
@@ -97,3 +98,8 @@ on_ft = ['pug']
 [[plugins]]
 repo = 'chrisbra/csv.vim'
 on_ft = ['csv']
+[[plugins]]
+repo='ryanoasis/vim-devicons'
+hook_add='''
+    let g:webdevicons_enable_denite = 1
+'''
