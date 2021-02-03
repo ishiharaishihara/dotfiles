@@ -1,3 +1,4 @@
+
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -65,6 +66,14 @@ if type bat > /dev/null;then
     PREVIEW_COMMAND="bat --color=always"
 fi
 
+if type gsed > /dev/null;then
+    alias sed='gsed'
+fi
+
+if type gxargs > /dev/null;then
+    alias xargs='gxargs'
+fi
+
 if type lsd > /dev/null;then
     alias ls='lsd'
 elif [ ls --version | grep GNU > /dev/null ];then
@@ -74,6 +83,17 @@ else
 fi
 
 alias repos='ghq list -p | fzf --preview "'"${PREVIEW_COMMAND}"' {}/README.md"'
+alias gip='curl inet-ip.info'
+
+complete-ssh-host() {
+  local host="$(command egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh -name config -type f 2>/dev/null) | command egrep -v '[*?]' | cut -d' ' -f 2- | sed 's/\s/\n/g' | sort | fzf)"
+
+  if [ ! -z "$host" ]; then
+    LBUFFER+="$host"
+  fi
+  zle reset-prompt
+}
+zle -N complete-ssh-host
 
 repo() {
     local dir="$(repos)"
@@ -86,7 +106,11 @@ autoload colors
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 
 bindkey -v
+bindkey '^s^s' complete-ssh-host
 setopt correct
 setopt nobeep
 setopt HIST_IGNORE_DUPS
+setopt no_flow_control
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
+
