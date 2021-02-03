@@ -2,3 +2,6 @@
 xmonad-x86_64-linux
 *.errors
 *.hi
+
+.env
+*-private

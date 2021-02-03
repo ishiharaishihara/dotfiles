@@ -1,9 +1,15 @@
+#[[plugins]]
+#repo='soramugi/auto-ctags.vim'
+#hook_add = '''
+    #let g:auto_ctags = 1
+    #let g:auto_ctags_directory_list = ['.git']
+    #let g:auto_ctags_filetype_mode = 1
+#'''
 [[plugins]]
-repo='soramugi/auto-ctags.vim'
-hook_add = '''
-    let g:auto_ctags = 1
-    let g:auto_ctags_directory_list = ['.git']
-    let g:auto_ctags_filetype_mode = 1
+repo='kassio/neoterm'
+hook_add='''
+    nnoremap <c-t><c-t> :Ttoggle<CR>
+    tnoremap <c-t><c-t> <C-\><C-n>:Ttoggle<CR>
 '''
 [[plugins]]
 repo='liuchengxu/vista.vim'
@@ -95,9 +101,10 @@ hook_add = '''
     "let g:ale_php_langserver_executable = $HOME. '/.config/composer/vendor/bin/php-language-server.php'
     let g:ale_fixers = {
         \   'php':['phpcbf'],
-        \   'javascript':['prettier'],
+        \   'javascript':['xo'],
         \   'css':['prettier'],
         \}
+    let g:ale_javascript_prettier_use_local_config = 1
     let g:ale_php_phpcbf_standard = 'PSR1,PSR2'
     let g:ale_fix_on_save = 1
     let g:ale_set_loclist = 0
@@ -112,7 +119,6 @@ build = 'bash install.sh'
 hook_add = '''
 let g:LanguageClient_serverCommands = {
     \ 'php': ['php','~/.config/composer/vendor/bin/php-language-server.php'],
-    \ 'javascript': [$NVM_BIN . '/javascript-typescript-stdio'],
     \ }
 '''
 
