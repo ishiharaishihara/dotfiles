@@ -86,7 +86,7 @@ alias repos='ghq list -p | fzf --preview "'"${PREVIEW_COMMAND}"' {}/README.md"'
 alias gip='curl inet-ip.info'
 
 complete-ssh-host() {
-  local host="$(command egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh -name config -type f 2>/dev/null) | command egrep -v '[*?]' | cut -d' ' -f 2- | sed 's/\s/\n/g' | sort | fzf)"
+  local host="$(command egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh -name config -type f 2>/dev/null) | command egrep -v '[*?]' | cut -d' ' -f 2- | sed 's/\\s/\'$'\n/g' | sort | fzf)"
 
   if [ ! -z "$host" ]; then
     LBUFFER+="$host"
