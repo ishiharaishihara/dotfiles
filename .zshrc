@@ -1,4 +1,5 @@
-
+export LANG=en_US.UTF-8
+export KCODE=u
 ### Added by Zinit's installer
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
@@ -113,5 +114,7 @@ setopt HIST_IGNORE_DUPS
 setopt no_flow_control
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
+nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
 
-export PATH="/opt/homebrew/opt/mysql-client/bin:$PATH"
+
+
