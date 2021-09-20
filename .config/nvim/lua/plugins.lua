@@ -11,6 +11,7 @@ return require'packer'.startup(function()
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/vim-vsnip'
     use 'hrsh7th/cmp-vsnip'
+    use 'onecentlin/laravel5-snippets-vscode'
     use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-nvim-lsp'
     use 'hrsh7th/cmp-path'
@@ -18,7 +19,8 @@ return require'packer'.startup(function()
     use {
         'nvim-telescope/telescope.nvim',
         requires = { 
-            {'nvim-lua/plenary.nvim'}
+            {'nvim-lua/plenary.nvim'},
+            {'nvim-telescope/telescope-ghq.nvim'},
         },
         config = function ()
             require'telescope-settings'
