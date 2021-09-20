@@ -9,9 +9,11 @@ path=(
     /usr/local/bin(N-/)
     /usr/local/sbin(N-/)
     /usr/local/opt/grep/libexec/gnubin(N-/)
+    /opt/homebrew/opt/mysql-client/bin(N-/)
     $HOME/bin(N-/) 
     $HOME/.config/composer/vendor/bin(N-/) 
     $HOME/.local/bin(N-/) 
+    $HOME/.tfenv/bin(N-/)
     $PYENV_ROOT/bin(N-/)
     $GOPATH/bin(N-/)
     $path
