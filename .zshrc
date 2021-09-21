@@ -114,7 +114,4 @@ setopt HIST_IGNORE_DUPS
 setopt no_flow_control
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync'
-
-
-
+(nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' &) > /dev/null

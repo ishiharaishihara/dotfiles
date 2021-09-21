@@ -1,4 +1,5 @@
 local o = vim.o
+local fn = vim.fn
 
 o.autoread=true
 o.hidden=true
@@ -41,9 +42,9 @@ if not (o.diff) then
 end
 
 
-if vim.fn.has('conceal') == 1 then
-  conceallevel=2 
-  concealcursor='i'
+if fn.has('conceal') == 1 then
+  o.conceallevel=2
+  o.concealcursor='i'
 end
 
 o.background='dark'

@@ -5,3 +5,5 @@ xmonad-x86_64-linux
 
 .env
 *-private
+
+packer_compiled.lua
