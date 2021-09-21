@@ -34,12 +34,29 @@ end
 local function setup_servers()
   require'lspinstall'.setup()
   local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{
-        on_attach = on_attach,
-        capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
+  local server_config = function (server)
+    local default_config = {
+      on_attach = on_attach,
+      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
     }
+    local server_config_list = {
+      lua = {
+        settings = {
+          Lua = {
+            diagnostics = {
+              globals = {'vim'},
+            }
+          }
+        }
+      }
+    }
+    local config = server_config_list[server] or {}
+    return vim.tbl_extend('force', default_config, config)
   end
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup(server_config(server))
+  end
+
 end
 
 setup_servers()
