@@ -1,0 +1,22 @@
+[user]
+	name = ISHIHARA Tatsuki
+	email = ishihara@tecpresso.co.jp
+[ghq]
+    root = ~/workspace
+[diff]
+    tool = nvimdiff
+[merge]
+	tool = nvimdiff
+[difftool]
+    prompt = false
+[difftool "nvimdiff"]
+    cmd = "nvim -R -d -c \"wincmd l\" -d \"$LOCAL\" \"$REMOTE\""
+[mergetool "nvimdiff"]
+    cmd = "nvim -d -c \"4wincmd w | wincmd J\" \"$LOCAL\" \"$BASE\" \"$REMOTE\"  \"$MERGED\""
+[push]
+	default = simple
+[credential]
+	helper = osxkeychain
+[core]
+	pager = LESSCHARSET=utf-8 less
+	quotepath = false
