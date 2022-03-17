@@ -1,0 +1,33 @@
+if type bat > /dev/null;then
+    alias cat='bat'
+    PREVIEW_COMMAND="bat --color=always"
+fi
+
+if type gsed > /dev/null;then
+    alias sed='gsed'
+fi
+
+if type gxargs > /dev/null;then
+    alias xargs='gxargs'
+fi
+
+if type lsd > /dev/null;then
+    alias ls='lsd'
+elif [ ls --version | grep GNU > /dev/null ];then
+    alias ls='ls --color=auto'
+else
+    alias ls='ls -G'
+fi
+
+alias repos='ghq list -p --vcs=git | fzf --preview "'"${PREVIEW_COMMAND}"' {}/README.md"'
+
+alias gip='curl inet-ip.info'
+
+case ${OSTYPE} in
+    darwin*) 
+        BROWSER='/Applications/Google Chrome.app'
+        if [ -f "${BROWSER}" ]
+            alias browse='open -a '\'"${BROWSER}"\'
+        ;;
+esac
+
