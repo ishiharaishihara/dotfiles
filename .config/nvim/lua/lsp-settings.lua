@@ -48,6 +48,29 @@ local function setup_servers()
             }
           }
         }
+      },
+      php = {
+        settings = {
+          intelephense = {
+            diagnostics = {
+              undefinedClassConstants = false,
+              undefinedConstants = false,
+              undefinedFunctions = false,
+              undefinedMethods = false,
+              undefinedProperties = false,
+              undefinedTypes = false,
+            }
+          }
+        }
+      },
+      yaml = {
+          settings = {
+              yaml = {
+                schemas = {
+                    ['https://github.com/Azure/vscode-kubernetes-tools/blob/1.3.3/syntaxes/helm.tmLanguage.json'] = 'goss{yml,yaml}'
+                }
+              }
+          }
       }
     }
     local config = server_config_list[server] or {}
