@@ -13,15 +13,39 @@ fi
 
 if type lsd > /dev/null;then
     alias ls='lsd'
-elif [ ls --version | grep GNU > /dev/null ];then
+elif ls --version 2> /dev/null | grep GNU &> /dev/null;then
     alias ls='ls --color=auto'
+    eval `dircolors -b`
 else
     alias ls='ls -G'
 fi
 
 alias repos='ghq list -p --vcs=git | fzf --preview "'"${PREVIEW_COMMAND}"' {}/README.md"'
 
-alias gip='curl inet-ip.info'
+gip() {
+  opt=""
+  while [ $# -gt 0 ]; do
+    case "$1" in
+      -4) opt="-4" ;;
+      -6) opt="-6" ;;
+      -h|--help)
+        echo "Usage: gip [-4|-6]  (-4=IPv4, -6=IPv6, no option=auto v6→v4)"
+        return
+        ;;
+      *)
+        echo "gip: unknown option: $1"
+        return 1
+        ;;
+    esac
+    shift
+  done
+
+  if [ -n "$opt" ]; then
+    curl -s $opt icanhazip.com
+  else
+    curl -s -6 icanhazip.com || curl -s -4 icanhazip.com
+  fi
+}
 
 case ${OSTYPE} in
     darwin*) 
@@ -31,3 +55,4 @@ case ${OSTYPE} in
         ;;
 esac
 
+alias whois='whois -h whois.cymru.com'

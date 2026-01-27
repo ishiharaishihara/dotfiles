@@ -18,6 +18,7 @@ path=(
     $HOME/.config/composer/vendor/bin(N-/) 
     $HOME/.local/bin(N-/) 
     $HOME/.tfenv/bin(N-/)
+    $HOME/.rbenv/bin(N-/)
     $GOPATH/bin(N-/)
     $VOLTA_HOME/bin(N-/)
     $path

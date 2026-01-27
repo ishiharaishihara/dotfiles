@@ -31,62 +31,62 @@ local on_attach = function(client, bufnr)
 
 end
 
-local function setup_servers()
-  require'lspinstall'.setup()
-  local servers = require'lspinstall'.installed_servers()
-  local server_config = function (server)
-    local default_config = {
-      on_attach = on_attach,
-      capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
-    }
-    local server_config_list = {
-      lua = {
-        settings = {
-          Lua = {
-            diagnostics = {
-              globals = {'vim'},
-            }
-          }
-        }
-      },
-      php = {
-        settings = {
-          intelephense = {
-            diagnostics = {
-              undefinedClassConstants = false,
-              undefinedConstants = false,
-              undefinedFunctions = false,
-              undefinedMethods = false,
-              undefinedProperties = false,
-              undefinedTypes = false,
-            }
-          }
-        }
-      },
-      yaml = {
-          settings = {
-              yaml = {
-                schemas = {
-                    ['https://github.com/Azure/vscode-kubernetes-tools/blob/1.3.3/syntaxes/helm.tmLanguage.json'] = 'goss{yml,yaml}'
-                }
-              }
-          }
-      }
-    }
-    local config = server_config_list[server] or {}
-    return vim.tbl_extend('force', default_config, config)
-  end
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup(server_config(server))
-  end
-
-end
-
-setup_servers()
-
--- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-require'lspinstall'.post_install_hook = function ()
-  setup_servers() -- reload installed servers
-  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
-end
-
+-- local function setup_servers()
+--   require'lspinstall'.setup()
+--   local servers = require'lspinstall'.installed_servers()
+--   local server_config = function (server)
+--     local default_config = {
+--       on_attach = on_attach,
+--       capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities()),
+--     }
+--     local server_config_list = {
+--       lua = {
+--         settings = {
+--           Lua = {
+--             diagnostics = {
+--               globals = {'vim'},
+--             }
+--           }
+--         }
+--       },
+--       php = {
+--         settings = {
+--           intelephense = {
+--             diagnostics = {
+--               undefinedClassConstants = false,
+--               undefinedConstants = false,
+--               undefinedFunctions = false,
+--               undefinedMethods = false,
+--               undefinedProperties = false,
+--               undefinedTypes = false,
+--             }
+--           }
+--         }
+--       },
+--       yaml = {
+--           settings = {
+--               yaml = {
+--                 schemas = {
+--                     ['https://github.com/Azure/vscode-kubernetes-tools/blob/1.3.3/syntaxes/helm.tmLanguage.json'] = 'goss{yml,yaml}'
+--                 }
+--               }
+--           }
+--       }
+--     }
+--     local config = server_config_list[server] or {}
+--     return vim.tbl_extend('force', default_config, config)
+--   end
+--   for _, server in pairs(servers) do
+--     require'lspconfig'[server].setup(server_config(server))
+--   end
+-- 
+-- end
+-- 
+-- setup_servers()
+-- 
+-- -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+-- require'lspinstall'.post_install_hook = function ()
+--   setup_servers() -- reload installed servers
+--   vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+-- end
+-- 

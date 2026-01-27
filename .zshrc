@@ -1,3 +1,7 @@
+
+# Kiro CLI pre block. Keep at the top of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
+
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
@@ -6,7 +10,7 @@ fi
 if [[ ! -f $HOME/.zinit/bin/zinit.zsh ]]; then
     print -P "%F{33}▓▒░ %F{220}Installing %F{33}DHARMA%F{220} Initiative Plugin Manager (%F{33}zdharma/zinit%F{220})…%f"
     command mkdir -p "$HOME/.zinit" && command chmod g-rwX "$HOME/.zinit"
-    command git clone https://github.com/zdharma/zinit "$HOME/.zinit/bin" && \
+    command git clone https://github.com/zdharma-continuum/zinit "$HOME/.zinit/bin" && \
         print -P "%F{33}▓▒░ %F{34}Installation successful.%f%b" || \
         print -P "%F{160}▓▒░ The clone has failed.%f%b"
 fi
@@ -20,10 +24,10 @@ autoload -Uz _zinit
 zinit light-mode for \
     pick"async.zsh" src"pure.zsh" \
         sindresorhus/pure \
-    zinit-zsh/z-a-rust \
-    zinit-zsh/z-a-as-monitor \
-    zinit-zsh/z-a-patch-dl \
-    zinit-zsh/z-a-bin-gem-node \
+    zdharma-continuum/z-a-rust \
+    zdharma-continuum/z-a-as-monitor \
+    zdharma-continuum/z-a-patch-dl \
+    zdharma-continuum/z-a-bin-gem-node \
     zdharma/fast-syntax-highlighting \
 
 zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
@@ -59,7 +63,6 @@ repo() {
         cd "$dir"
     fi
 }
-eval `dircolors -b`
 autoload colors
 zstyle ':completion:*' list-colors "${LS_COLORS}"
 
@@ -71,3 +74,12 @@ setopt HIST_IGNORE_DUPS
 setopt no_flow_control
 
 (nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' &) > /dev/null 2>&1
+
+if which rbenv > /dev/null; then 
+    eval "$(rbenv init -)"
+fi
+
+
+
+# Kiro CLI post block. Keep at the bottom of this file.
+[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"

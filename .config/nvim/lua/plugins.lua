@@ -11,7 +11,7 @@ return require'packer'.startup(function(use)
     use 'folke/tokyonight.nvim'
     use 'neovim/nvim-lspconfig'
     use 'hrsh7th/vim-vsnip'
-    use 'hrsh7th/cmp-vsnip'
+--    use 'hrsh7th/cmp-vsnip'
     use 'onecentlin/laravel5-snippets-vscode'
     use 'hrsh7th/cmp-nvim-lua'
     use 'hrsh7th/cmp-nvim-lsp'
@@ -34,9 +34,24 @@ return require'packer'.startup(function(use)
         end
     }
     use {
-        'kabouzeid/nvim-lspinstall',
-        config = function ()
-            require'lsp-settings'
+        "williamboman/mason.nvim",
+        run = ":MasonUpdate", -- :MasonUpdate updates registry contents
+        config = function()
+            require'mason'.setup{
+                ui = {
+                    icons = {
+                        package_installed = "✓",
+                        package_pending = "➜",
+                        package_uninstalled = "✗"
+                    }
+                }
+            }
+        end
+    }
+    use {
+        "williamboman/mason-lspconfig.nvim",
+        config = function()
+            require'mason-lspconfig'.setup()
         end
     }
     use {
@@ -46,17 +61,11 @@ return require'packer'.startup(function(use)
         end
     }
     use {
-        'blackCauldron7/surround.nvim',
-        config = function()
-            require'surround'.setup{mappings_style = 'sandwich'}
-        end
-    }
-    use {
         'nvim-treesitter/nvim-treesitter',
         run = ':TSUpdate',
         config = function()
             require'nvim-treesitter.configs'.setup{
-                ensure_installed = "maintained",
+                ensure_installed = "all",
                 highlight = {
                     enable = true,
                 },
