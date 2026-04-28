@@ -56,3 +56,47 @@ case ${OSTYPE} in
 esac
 
 alias whois='whois -h whois.cymru.com'
+
+access_per_minute(){
+    local mode=""
+    local dir="apache2/domlogs"
+    local OPTIND=1
+    while getopts "p:d" opt; do
+        case "$opt" in
+            p)
+                mode="$OPTARG"
+                ;;
+            d)
+                dir="$OPTARG"
+                ;;
+            *)
+                echo "Usage: my_func [-p minute|ua] [-d directory] [host]"
+                return 1
+                ;;
+        esac
+    done
+    shift $((OPTIND - 1))
+
+    local host=$1
+    _per_minute() { awk '{print $4}' | cut -b2-18 | sort | uniq -c; }
+    _per_ua()     { awk -F'"' '{print $6}' | sort | uniq -c | sort -nr;}
+    _per_path()     { awk '{print $7}' | sort | uniq -c | sort -nr;}
+    case "$mode" in
+        "minute")
+            echo "モード: 分単位 / ディレクトリ: $dir"
+            ;;
+        "ua")
+            echo "モード: User-Agent / ディレクトリ: $dir"
+            ;;
+        *)
+            echo "エラー: -p オプションで minute または ua を指定してください。"
+            return 1
+            ;;
+    esac
+    ssh $host grep -r -e "$(date '+%d/%b/%Y:%H')" /var/log/"${web}" | awk '{print $4}' | cut -b2-18 | sort | uniq -c
+}
+access_per_ua(){
+
+}
+alias access_per_minute="grep -r $(date '+%d/%b/%Y:%H') | awk '{print $4}' | cut -b2-18 | sort | uniq -c"
+alias grep_dynamic='grep -ive "GET /.*\.\(css.*\|js.*\|jpeg.*\|svg.*\|webp.*\|jpg.*\|gif.*\|png.*\|swf\|ico\)\ HTTP"'
