@@ -48,3 +48,4 @@ if fn.has('conceal') == 1 then
 end
 
 o.background='dark'
+

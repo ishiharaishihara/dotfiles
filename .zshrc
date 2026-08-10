@@ -1,7 +1,3 @@
-
-# Kiro CLI pre block. Keep at the top of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.pre.zsh"
-
 if type brew &>/dev/null; then
   FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 fi
@@ -30,8 +26,26 @@ zinit light-mode for \
     zdharma-continuum/z-a-bin-gem-node \
     zdharma/fast-syntax-highlighting \
 
-zinit wait lucid atload"zicompinit; zicdreplay" blockf for \
-    zsh-users/zsh-completions 
+_ssh_conf_cmp() {
+  local -a hosts
+
+  hosts=($(
+    awk '
+      /^Host /{
+        for(i=2;i<=NF;i++)
+          if($i !~ /[*?]/) print $i
+      }
+    ' ~/.ssh/config | sort -u
+  ))
+
+  compadd -- "${hosts[@]}"
+}
+
+
+#zinit wait lucid atload"zicompinit; zicdreplay; compdef _ssh_hosts ssh" blockf for \
+zinit wait lucid atload"zicompinit; zicdreplay; compdef _ssh_conf_cmp ssh" blockf for \
+    zsh-users/zsh-completions\
+    Aloxaf/fzf-tab\
 
 ### End of Zinit's installer chunk
 
@@ -48,7 +62,7 @@ PREVIEW_COMMAND="cat"
 source "$HOME/.zsh_aliases"
 
 complete-ssh-host() {
-  local host="$(command egrep -i '^Host\s+.+' $HOME/.ssh/config $(find $HOME/.ssh -name config -type f 2>/dev/null) | command egrep -v '[*?]' | cut -d' ' -f 2- | sed 's/ /\'$'\n/g' | sed '/^$/d'| sort | fzf)"
+  local host="$(command egrep -i '^Host\s+.+' $HOME/.ssh/config | command egrep -v '[*?]' | cut -d' ' -f 2- | sed 's/ /\'$'\n/g' | sed '/^$/d'| sort | fzf)"
 
   if [ ! -z "$host" ]; then
     LBUFFER+="$host"
@@ -65,12 +79,22 @@ repo() {
 }
 autoload colors
 zstyle ':completion:*' list-colors "${LS_COLORS}"
+zstyle ':fzf-tab:*' fzf-command fzf
+zstyle ':fzf-tab:*' switch-group ',' '.'
+
+HISTFILE=~/.zsh_history
+HISTSIZE=100000
+SAVEHIST=100000
+
+setopt APPEND_HISTORY
+setopt INC_APPEND_HISTORY
+setopt HIST_IGNORE_DUPS
+setopt HIST_IGNORE_ALL_DUPS
 
 bindkey -v
 bindkey '^s^s' complete-ssh-host
 setopt correct
 setopt nobeep
-setopt HIST_IGNORE_DUPS
 setopt no_flow_control
 
 (nvim --headless -c 'autocmd User PackerComplete quitall' -c 'PackerSync' &) > /dev/null 2>&1
@@ -80,6 +104,7 @@ if which rbenv > /dev/null; then
 fi
 
 
-
-# Kiro CLI post block. Keep at the bottom of this file.
-[[ -f "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh" ]] && builtin source "${HOME}/Library/Application Support/kiro-cli/shell/zshrc.post.zsh"
+# Added by LM Studio CLI (lms)
+export PATH="$PATH:/Users/ishihara/.lmstudio/bin"
+# End of LM Studio CLI section
+eval "$(atuin init zsh)"

@@ -78,25 +78,43 @@ access_per_minute(){
     shift $((OPTIND - 1))
 
     local host=$1
+    local _func_name=""
     _per_minute() { awk '{print $4}' | cut -b2-18 | sort | uniq -c; }
     _per_ua()     { awk -F'"' '{print $6}' | sort | uniq -c | sort -nr;}
     _per_path()     { awk '{print $7}' | sort | uniq -c | sort -nr;}
     case "$mode" in
         "minute")
             echo "モード: 分単位 / ディレクトリ: $dir"
+            _func_name="_per_minute"
             ;;
         "ua")
             echo "モード: User-Agent / ディレクトリ: $dir"
+            _func_name="_per_ua"
             ;;
         *)
             echo "エラー: -p オプションで minute または ua を指定してください。"
             return 1
             ;;
     esac
-    ssh $host grep -r -e "$(date '+%d/%b/%Y:%H')" /var/log/"${web}" | awk '{print $4}' | cut -b2-18 | sort | uniq -c
+    ssh $host grep -r -e "$(date -d '1 hour ago' '+%d/%b/%Y:%H')" -e "$(date '+%d/%b/%Y:%H')" /var/log/"${dir}" | grep -ive "GET /.*\.\(css.*\|js.*\|jpeg.*\|svg.*\|webp.*\|jpg.*\|gif.*\|png.*\|swf\|ico\)\ HTTP" | "$_func_name"
 }
-access_per_ua(){
+#alias access_per_minute="grep -r $(date '+%d/%b/%Y:%H') | awk '{print $4}' | cut -b2-18 | sort | uniq -c"
+#alias grep_dynamic='grep -ive "GET /.*\.\(css.*\|js.*\|jpeg.*\|svg.*\|webp.*\|jpg.*\|gif.*\|png.*\|swf\|ico\)\ HTTP"'
+nvim() {
+    case " $* " in
+        *" --headless "*)
+            command nvim "$@"
+            return
+            ;;
+    esac
 
+    if [ -n "$NVIM" ]; then
+        if [ "$#" -eq 0 ]; then
+            command nvr --remote-send '<C-\><C-N>:tabnew<CR>'
+        else
+            command nvr --remote-tab-silent "$@"
+        fi
+    else
+        command nvim "$@"
+    fi
 }
-alias access_per_minute="grep -r $(date '+%d/%b/%Y:%H') | awk '{print $4}' | cut -b2-18 | sort | uniq -c"
-alias grep_dynamic='grep -ive "GET /.*\.\(css.*\|js.*\|jpeg.*\|svg.*\|webp.*\|jpg.*\|gif.*\|png.*\|swf\|ico\)\ HTTP"'
