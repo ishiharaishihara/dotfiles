@@ -1,4 +1,4 @@
-local cmp = require'cmp'
+local cmp = require 'cmp'
 vim.o.completeopt = 'menu,menuone,noselect'
 cmp.setup({
     snippet = {
@@ -36,5 +36,5 @@ cmp.setup({
         { name = 'path' },
     }
 })
-vim.cmd("autocmd FileType lua lua require'cmp'.setup.buffer {sources={{name='nvim_lua'},{name='buffer'},{name='path'}},}")
-
+vim.cmd(
+    "autocmd FileType lua lua require'cmp'.setup.buffer {sources={{name='nvim_lua'},{name='buffer'},{name='path'}},}")

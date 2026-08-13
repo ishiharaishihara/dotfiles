@@ -3,12 +3,11 @@
 ## Installation
 
 ```bash
-/bin/bash -c "curl -fsSL https://raw.githubusercontent.com/ishiharaishihara/dotfiles/master/install.sh" 
+/bin/bash -c "curl -fsSL https://raw.githubusercontent.com/ishiharaishihara/dotfiles/master/install.sh" | bash
 ```
 
 or
 
 ```bash
-/bin/bash -c "wget -O - https://raw.githubusercontent.com/ishiharaishihara/dotfiles/master/install.sh" 
+/bin/bash -c "wget -O - https://raw.githubusercontent.com/ishiharaishihara/dotfiles/master/install.sh" | bash
 ```
-

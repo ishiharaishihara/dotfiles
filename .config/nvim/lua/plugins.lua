@@ -53,6 +53,32 @@ return require 'packer'.startup(function(use)
                     "terraformls",
                     "tflint",
                     "gh_actions_ls",
+                    "marksman",
+                }
+            })
+        end
+    }
+    use {
+        "nvimtools/none-ls.nvim",
+        requires = {
+            "nvim-lua/plenary.nvim",
+        },
+        config = function()
+            local null_ls = require("null-ls")
+
+            null_ls.setup({
+                sources = {
+                    null_ls.builtins.formatting.mdformat,
+                },
+            })
+        end,
+    }
+    use {
+        'WhoIsSethDaniel/mason-tool-installer.nvim',
+        config = function()
+            require('mason-tool-installer').setup({
+                ensure_installed = {
+                    "mdformat"
                 }
             })
         end

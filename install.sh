@@ -39,4 +39,4 @@ else
     mv -f dotfiles-master "$DOTPATH"
 fi
 
-make install
+cd ${DOTPATH} && make install
