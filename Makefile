@@ -1,4 +1,4 @@
-DOTPATH := $(patsubst %/,%,$(dir $(realpath $(firstword $(MAKEFILE_LIST))))
+DOTPATH := $(patsubst %/,%,$(dir $(realpath $(firstword $(MAKEFILE_LIST)))))
 EXCLUSIONS := .git .gitignore .DS_Store
 CANDIDATES := $(patsubst %/,%,$(wildcard .??*)) bin
 DOTFILES := $(filter-out $(EXCLUSIONS),$(CANDIDATES))
