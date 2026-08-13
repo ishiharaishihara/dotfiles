@@ -50,6 +50,9 @@ return require 'packer'.startup(function(use)
                     "yamlls",
                     "jsonls",
                     "gopls",
+                    "terraformls",
+                    "tflint",
+                    "gh_actions_ls",
                 }
             })
         end
@@ -164,5 +167,19 @@ return require 'packer'.startup(function(use)
             map('n', '<leader>lg', '<cmd>LazyGit<cr>')
         end
 
+    }
+    use {
+        'pwntester/octo.nvim',
+        requires = {
+            'nvim-lua/plenary.nvim',
+            'nvim-telescope/telescope.nvim',
+            'nvim-tree/nvim-web-devicons',
+        },
+        config = function()
+            require('octo').setup()
+            local map = require 'functions'.map
+            map('n', '<leader>gt', '<cmd>Octo search org:tecpresso state:open<cr>')
+            map('n', '<leader>go', '<cmd>Octo search involves:@me state:open<cr>')
+        end,
     }
 end)

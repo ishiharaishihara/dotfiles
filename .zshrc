@@ -42,7 +42,6 @@ _ssh_conf_cmp() {
 }
 
 
-#zinit wait lucid atload"zicompinit; zicdreplay; compdef _ssh_hosts ssh" blockf for \
 zinit wait lucid atload"zicompinit; zicdreplay; compdef _ssh_conf_cmp ssh" blockf for \
     zsh-users/zsh-completions\
     Aloxaf/fzf-tab\
