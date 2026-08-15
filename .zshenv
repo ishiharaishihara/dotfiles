@@ -7,6 +7,7 @@ export XDG_CACHE_HOME="$HOME/.cache"
 export GHQ_ROOT="$HOME/workspace"
 export GOPATH="$HOME/go"
 export VOLTA_HOME="$HOME/.volta"
+export SSH_AUTH_SOCK="$HOME/Library/Group Containers/2BUA8C4S2C.com.1password/t/agent.sock"
 
 path=(
     /usr/local/bin(N-/)

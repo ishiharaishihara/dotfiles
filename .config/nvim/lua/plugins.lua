@@ -39,7 +39,6 @@ return require 'packer'.startup(function(use)
         requires = { 'williamboman/mason.nvim', 'neovim/nvim-lspconfig' },
         config = function()
             require 'mason'.setup()
-
             require("mason-lspconfig").setup({
                 ensure_installed = {
                     "lua_ls",
@@ -56,6 +55,18 @@ return require 'packer'.startup(function(use)
                     "marksman",
                 }
             })
+            vim.lsp.config("intelephense", {
+                on_attach = function(client)
+                    client.server_capabilities.documentFormattingProvider = false
+                end,
+                settings = {
+                    intelephense = {
+                        files = {
+                            associations = { "*.php", "*.stub" },
+                        },
+                    },
+                },
+            })
         end
     }
     use {
@@ -69,6 +80,7 @@ return require 'packer'.startup(function(use)
             null_ls.setup({
                 sources = {
                     null_ls.builtins.formatting.mdformat,
+                    null_ls.builtins.formatting.phpcbf,
                 },
             })
         end,
@@ -78,7 +90,8 @@ return require 'packer'.startup(function(use)
         config = function()
             require('mason-tool-installer').setup({
                 ensure_installed = {
-                    "mdformat"
+                    "mdformat",
+                    "phpcbf"
                 }
             })
         end
@@ -112,7 +125,7 @@ return require 'packer'.startup(function(use)
         'ahmedkhalf/project.nvim',
         config = function()
             require("project_nvim").setup({
-                detection_methods = { "lsp", "pattern" },
+                detection_methods = { "pattern" },
                 patterns = { ".git", "_darcs", ".hg", ".bzr", ".svn", "Makefile", "package.json" },
                 manual_mode = false,
             })
@@ -207,5 +220,16 @@ return require 'packer'.startup(function(use)
             map('n', '<leader>gt', '<cmd>Octo search org:tecpresso state:open<cr>')
             map('n', '<leader>go', '<cmd>Octo search involves:@me state:open<cr>')
         end,
+    }
+    use {
+        'mrjones2014/op.nvim',
+        run = 'make install',
+        config = function()
+            require('op').setup()
+            local map = require 'functions'.map
+            map('n', '<leader>oo', '<cmd>OpOpen<cr>')
+            map('n', '<leader>ov', '<cmd>OpView<cr>')
+            map('n', '<leader>oi', '<cmd>OpInsert<cr>')
+        end
     }
 end)
