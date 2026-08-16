@@ -11,3 +11,6 @@ xmonad-x86_64-linux
 .config/op
 
 packer_compiled.lua
+.config/atuin
+.config/go/telemetry/local
+.config/ubuntu-insights

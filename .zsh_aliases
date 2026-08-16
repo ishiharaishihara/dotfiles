@@ -22,6 +22,11 @@ fi
 
 alias repos='ghq list -p --vcs=git | fzf --preview "'"${PREVIEW_COMMAND}"' {}/README.md"'
 
+if [[ -n "$WSL_DISTRO_NAME" ]] || [[ "$(uname -r)" == *[Mm]icrosoft* ]]; then
+    alias ssh='ssh.exe'
+    alias ssh-add='ssh-add.exe'
+fi
+
 gip() {
   opt=""
   while [ $# -gt 0 ]; do
