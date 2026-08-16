@@ -159,7 +159,8 @@ return require 'packer'.startup(function(use)
         'rmagatti/auto-session',
         config = function()
             require("auto-session").setup({
-                single_session_mode = true
+                single_session_mode = true,
+                auto_restore_last_session = true
             })
         end
     }
