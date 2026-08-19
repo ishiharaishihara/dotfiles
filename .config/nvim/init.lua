@@ -25,6 +25,9 @@ vim.diagnostic.config({
 vim.api.nvim_create_autocmd("BufWritePre", {
     pattern = "*",
     callback = function()
+        if vim.b.no_autoformat then
+            return
+        end
         vim.lsp.buf.format({ async = false })
     end,
 })

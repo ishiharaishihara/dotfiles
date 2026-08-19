@@ -226,11 +226,26 @@ return require 'packer'.startup(function(use)
         'mrjones2014/op.nvim',
         run = 'make install',
         config = function()
-            require('op').setup()
+            require('op').setup({
+                signin_on_start = false,
+                secret_detection_diagnostics = {
+                    disabled = true,
+                },
+            })
             local map = require 'functions'.map
             map('n', '<leader>oo', '<cmd>OpOpen<cr>')
             map('n', '<leader>ov', '<cmd>OpView<cr>')
             map('n', '<leader>oi', '<cmd>OpInsert<cr>')
         end
+    }
+    use {
+        "tpope/vim-dadbod",
+        requires = {
+            "kristijanhusak/vim-dadbod-ui",
+            "pbogut/vim-dadbod-ssh",
+        },
+        config = function()
+            vim.keymap.set("n", "<leader>db", ":DBUI<CR>", { silent = true })
+        end,
     }
 end)
